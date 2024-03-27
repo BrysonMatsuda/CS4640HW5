@@ -1,0 +1,9 @@
+.form-inputs{
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+}
+
+.submit-button{
+    width: 60px;
+}
