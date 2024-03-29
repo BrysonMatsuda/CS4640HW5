@@ -29,23 +29,24 @@
                     Correct Categories:
                 </div>
                 <div class="card-body">
-                <?php if (!empty($allWordsList)): ?>
-                <div class="card">
-                    <div class="card-header text-center">
-                        Correct Connections
+                    <?php foreach ($_SESSION["currentGameCategories"] as $category => $words): ?>
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-header text-center">
+                                        <?php echo $category; ?>
+                                    </div>
+                                    <div class="card-body">
+                                    <ul>
+                                    <?php foreach ($words as $word): ?>
+                                        <li><?php echo $word; ?></li>
+                                    <?php endforeach; ?>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <table class="table table-striped table-dark table-bordered">
-                            <?php foreach ($allWordsList as $index => $word): ?>
-                                <tr>
-                                    <td><?php echo $index + 1; ?>:</td>
-                                    <td><?php echo $word; ?></td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </table>
-                    </div>
-                </div>
-            <?php endif; ?>
+                    <?php endforeach; ?>
                     <form action="index.php?command=playagain" method="post">
                         <button type="submit" class="btn btn-primary">Play Again</button>
                     </form>
