@@ -26,9 +26,11 @@ class CategoryGameController {
             case "showcategories":
                 $this->showCategories();
                 break;
+            /*
             case "answer":
                 $this->submitAnswer();
                 break;
+            */
             case "answer2":
                 $this->submitAnswer2();
                 break;
@@ -50,7 +52,7 @@ class CategoryGameController {
     public function sessionDestroyer(){
         session_destroy();
 
-        header("Location: welcome.php");
+        header("Location: index.php");
         exit();
     }
 
@@ -59,6 +61,13 @@ class CategoryGameController {
     }
 
     public function showCategories(){
+        if(!isset($_SESSION["name"]) || !isset($_SESSION["email"])){
+            echo("Please enter name and email!");
+
+            header("Location: index.php?command=makeitdefault");
+            exit();
+
+        }
         $selectedCategories = $this -> chooseFourCategories();
 
         include("gametable.php");
@@ -66,6 +75,13 @@ class CategoryGameController {
 
     public function playAgain(){
         //$_SESSION["currentGameCategories"] = $this->chooseFourCategories();
+        if(!isset($_SESSION["name"]) || !isset($_SESSION["email"])){
+            echo("Please enter name and email!");
+
+            header("Location: index.php?command=makeitdefault");
+            exit();
+
+        }
         unset($_SESSION['currentGameCategories']);
         unset($_SESSION["allWords"]);
 
@@ -77,6 +93,15 @@ class CategoryGameController {
     }
 
     public function exitGame(){
+
+        if(!isset($_SESSION["name"]) || !isset($_SESSION["email"])){
+            echo("Please enter name and email!");
+
+            header("Location: index.php?command=makeitdefault");
+            exit();
+
+        }
+
         $name = $_SESSION["name"];
         $email = $_SESSION["email"];
         $guesses = $_SESSION["guesses"];
@@ -84,7 +109,7 @@ class CategoryGameController {
         $currentGameCategories = $_SESSION["currentGameCategories"];
         include("gameover.php");
     }
-
+    /*
     public function submitAnswer(){
         if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["answer"])) {
             $userAnswer = $_POST["answer"];
@@ -108,8 +133,19 @@ class CategoryGameController {
             echo "Invalid form submission!";
         }
     }
-
+    */
     public function submitAnswer2(){
+
+        
+        if(!isset($_SESSION["name"]) || !isset($_SESSION["email"])){
+            echo("Please enter name and email!");
+
+            header("Location: index.php?command=showcategories");
+            exit();
+
+        }
+
+
         if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["answer"])) {
             $userAnswer = $_POST["answer"];
             $currentCategories = $_SESSION["currentGameCategories"];
@@ -187,6 +223,8 @@ class CategoryGameController {
     }
 
     public function playGame(){
+
+
         
         if(!isset($_SESSION["currentGameCategories"])){
             $_SESSION["currentGameCategories"] = $this->chooseFourCategories();
@@ -245,6 +283,8 @@ class CategoryGameController {
         }
 
     }
+
+
 
 
     public function loadCategoriesFromJSON(){
