@@ -16,7 +16,7 @@
             <p> 
                 This is some testing input
             </p>  
-            <form action = "?command=question" method = "POST" class = "form-inputs">
+            <form action = "index.php?command=postwelcome" method = "POST" class = "form-inputs">
                 <div class = "mb-3">
                     <label for="username">Username</label>
                         <input type="text" id = "username" name = "username" minlength="3">
