@@ -49,7 +49,9 @@
         </div>
         <div class="row">
             <div class="col text-end">
-                <a href="gameover.php" class="btn btn-sm btn-danger mt-3">Exit Game</a>
+                    <form action="?command=answer" method="post">
+                        <button type="submit" class="btn btn-primary">Exit Game</button>
+                    </form>
             </div>
         </div>
     </div>

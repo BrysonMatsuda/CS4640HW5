@@ -35,6 +35,12 @@ class CategoryGameController {
             case "manualsessiondestroy":
                 $this->sessionDestroyer();
                 break;
+            case "playagain":
+                $this->playAgain();
+                break;
+            case "quitgame":
+                $this->exitGame();
+                break;
             default:
                 $this->showWelcomePage();
                 break;
@@ -44,7 +50,8 @@ class CategoryGameController {
     public function sessionDestroyer(){
         session_destroy();
 
-        include("welcome.php");
+        header("Location: welcome.php");
+        exit();
     }
 
     public function showWelcomePage(){
@@ -54,7 +61,23 @@ class CategoryGameController {
     public function showCategories(){
         $selectedCategories = $this -> chooseFourCategories();
 
-        include("gamepage.php");
+        include("gametable.php");
+    }
+
+    public function playAgain(){
+        $_SESSION["currentGameCategories"] = $this->chooseFourCategories();
+        $_SESSION["guesses"] = 0;
+        $_SESSION["guessArray"] = array();
+        $_SESSION["allWords"] = [];
+
+        $this->playGame();
+    }
+
+    public function exitGame(){
+        $name = $_SESSION["name"];
+        $email = $_SESSION["email"];
+        $guesses = $_SESSION["guesses"];
+        include("gameover.php");
     }
 
     public function submitAnswer(){
