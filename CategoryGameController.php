@@ -77,6 +77,8 @@ class CategoryGameController {
         $name = $_SESSION["name"];
         $email = $_SESSION["email"];
         $guesses = $_SESSION["guesses"];
+        $allWordsList = $_SESSION["allWords"];
+        $currentGameCategories = $_SESSION["currentGameCategories"];
         include("gameover.php");
     }
 
