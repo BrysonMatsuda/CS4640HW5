@@ -49,7 +49,7 @@
         </div>
         <div class="row">
             <div class="col text-end">
-                <a href="gameover.php" class="btn btn-sm btn-danger mt-3">Exit Game</a> <!-- Exit button -->
+                <a href="gameover.php" class="btn btn-sm btn-danger mt-3">Exit Game</a>
             </div>
         </div>
     </div>

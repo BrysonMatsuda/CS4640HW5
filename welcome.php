@@ -18,8 +18,8 @@
             </p>  
             <form action = "index.php?command=postwelcome" method = "POST" class = "form-inputs">
                 <div class = "mb-3">
-                    <label for="username">Username</label>
-                        <input type="text" id = "username" name = "username" minlength="3">
+                    <label for="name">Username</label>
+                        <input type="text" id = "name" name = "name" minlength="3">
                 </div>
                 <div class = "mb-3">
                     <label for="email">Email</label>

@@ -94,7 +94,7 @@ class CategoryGameController {
         if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             if(!empty($_POST["name"]) && !empty($_POST["email"])){
-                $_SESSION["name"] = $_POST["username"];
+                $_SESSION["name"] = $_POST["name"];
                 $_SESSION["email"] = $_POST["email"];
                 $this->playGame();
                 header("Location: index.php?command=showcategories");
