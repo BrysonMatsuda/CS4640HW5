@@ -23,6 +23,11 @@ class CategoryGameController {
             case "postwelcome":
                 $this->checkPostedInfo();
                 break;
+            case "showcategories":
+                $this->showCategories();
+            case "answer":
+                $this->submitAnswer();
+                break;
             default:
                 $this->showWelcomePage();
                 break;
@@ -31,6 +36,12 @@ class CategoryGameController {
 
     public function showWelcomePage(){
         include("welcome.php");
+    }
+
+    public function showCategories(){
+        $selectedCategories = $this -> chooseFourCategories();
+
+        include("gamepage.php");
     }
 
     public function playGame(){
@@ -43,6 +54,7 @@ class CategoryGameController {
         $currentGameCategoriesLocalVariable = $_SESSION["currentGameCategories"];
         $currentNameLocalVariable = $_SESSION["name"];
         $currentEmailLocalVariable = $_SESSION["email"];
+        $currentGuessesLocalVariable = $_SESSION["guesses"];
 
         //i would also set a variable for number of guesses here
         //and an array of past guesses (words)
