@@ -19,7 +19,7 @@
         <div class="col">
             <p>User: <?php echo $name; ?></p>
             <p>Email: <?php echo $email; ?></p>
-            <p>Total Guesses: <?php echo $guesses; ?></p>
+            <p>Total Guesses: <?php if(count($_SESSION["allWords"]) == 0){echo $guesses." to find all connections";}else{echo "Did not correctly guess the categories";} ?></p>
         </div>
     </div>
     <div class="row">
