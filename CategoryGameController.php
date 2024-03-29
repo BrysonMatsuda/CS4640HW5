@@ -153,6 +153,10 @@ class CategoryGameController {
                     array_push($_SESSION["guessArray"], $wordAnswersArray);
 
                     //STILL NEED TO CHECK IF GAME IS OVER!!!!!!
+                    if(count($_SESSION["allWords"]) == 0){
+                        $this->exitGame();
+                        exit();
+                    }
                 }
 
                 $currCount = count($uniqueArray);

@@ -9,12 +9,12 @@
 </head>
 <body>
     <h1>
-        Welcome to the Page
+        Welcome to Connections!
     </h1>
     <div class = "row">
         <div class = "col-xs-12">
             <p> 
-                This is some testing input
+                Login
             </p>  
             <form action = "index.php?command=postwelcome" method = "POST" class = "form-inputs">
                 <div class = "mb-3">
