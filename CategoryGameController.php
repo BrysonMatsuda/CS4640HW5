@@ -25,6 +25,7 @@ class CategoryGameController {
                 break;
             case "showcategories":
                 $this->showCategories();
+                break;
             case "answer":
                 $this->submitAnswer();
                 break;
@@ -42,6 +43,30 @@ class CategoryGameController {
         $selectedCategories = $this -> chooseFourCategories();
 
         include("gamepage.php");
+    }
+
+    public function submitAnswer(){
+        if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["answer"])) {
+            $userAnswer = $_POST["answer"];
+            $selectedCategories = $_SESSION["currentGameCategories"];
+
+            $correctGuesses = 0;
+            $submittedWords = explode(" ", $userAnswer);
+
+            foreach($submittedWords as $submittedWord){
+                foreach($selectedCategories as $category => $words){
+                    if(in_array($submittedWord, $words)){
+                        $correctGuesses++;
+                        break;
+                    }
+                }
+            }
+
+            header("Location: gamepage.php");
+            exit();
+        } else {
+            echo "Invalid form submission!";
+        }
     }
 
     public function playGame(){
@@ -69,9 +94,11 @@ class CategoryGameController {
         if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             if(!empty($_POST["name"]) && !empty($_POST["email"])){
-                $_SESSION["name"] = $_POST["name"];
+                $_SESSION["name"] = $_POST["username"];
                 $_SESSION["email"] = $_POST["email"];
                 $this->playGame();
+                header("Location: index.php?command=showcategories");
+                exit();
             }
             else{
                 echo("Please enter a username and password!");

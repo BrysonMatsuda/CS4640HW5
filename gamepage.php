@@ -31,7 +31,7 @@
                     Words
                 </div>
                 <div class="card-body">
-                    <?php foreach ($selectedCategories as $category => $words): ?>
+                    <?php foreach ($currentGameCategories as $category => $words): ?>
                         <h5 class="card-title text-center"><?= $category ?></h5>
                         <ul>
                             <?php foreach ($words as $word): ?>
@@ -45,6 +45,11 @@
                         <button type="submit" class="btn btn-primary">Submit Guess</button>
                     </form>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-end">
+                <a href="gameover.php" class="btn btn-sm btn-danger mt-3">Exit Game</a> <!-- Exit button -->
             </div>
         </div>
     </div>
