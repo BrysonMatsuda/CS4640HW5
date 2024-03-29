@@ -65,10 +65,13 @@ class CategoryGameController {
     }
 
     public function playAgain(){
-        $_SESSION["currentGameCategories"] = $this->chooseFourCategories();
+        //$_SESSION["currentGameCategories"] = $this->chooseFourCategories();
+        unset($_SESSION['currentGameCategories']);
+        unset($_SESSION["allWords"]);
+
         $_SESSION["guesses"] = 0;
         $_SESSION["guessArray"] = array();
-        $_SESSION["allWords"] = [];
+        
 
         $this->playGame();
     }
