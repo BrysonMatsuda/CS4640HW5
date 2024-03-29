@@ -12,22 +12,22 @@
         Welcome to the Page
     </h1>
     <div class = "row">
-    <div class = "col-xs-12">
-        <p> 
-            This is some testing input
-        </p>  
-        <form action = "?command=question" method = "POST" class = "form-inputs">
-            <div class = "mb-3">
-                <label for="username">Username</label>
-                    <input type="text" id = "username" name = "username" minlength="3">
-            </div>
-            <div class = "mb-3">
-                <label for="email">Email</label>
-                    <input type="text" id = "email" name = "email" minlength="5">
-            </div>
-            <button type = "submit" class = "submit-button">Start</button>
-        </form>
-    </div>
+        <div class = "col-xs-12">
+            <p> 
+                This is some testing input
+            </p>  
+            <form action = "?command=question" method = "POST" class = "form-inputs">
+                <div class = "mb-3">
+                    <label for="username">Username</label>
+                        <input type="text" id = "username" name = "username" minlength="3">
+                </div>
+                <div class = "mb-3">
+                    <label for="email">Email</label>
+                        <input type="text" id = "email" name = "email" minlength="5">
+                </div>
+                <button type = "submit" class = "submit-button">Start</button>
+            </form>
+        </div>
     </div>
     
 </body>
