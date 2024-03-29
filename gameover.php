@@ -12,7 +12,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h1 class="text-center mb-4">Game Over</h1>
+            <h1 class="text-center mb-4"><?php if(count($_SESSION["allWords"]) == 0){echo "You Won!";}else{echo "Game Over";} ?></h1>
         </div>
     </div>
     <div class="row">
