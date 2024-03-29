@@ -123,11 +123,20 @@ class CategoryGameController {
                 array_push($wordAnswersArray, $_SESSION["allWords"][(int)$guessIndex-1]);
             }
             //var_dump($wordAnswersArray);
+            $sameAnswerBlocker = false;
+            if(count(array_unique($wordAnswersArray)) < 4){
+                $sameAnswerBlocker = true;
+                array_push($wordAnswersArray, "Can't guess the same word more than once...");
+                array_push($_SESSION["guessArray"], $wordAnswersArray);
+            }
 
             $minCount = 100;
             $blocker = true;
             foreach($currentCategories as $key => $value){
                 
+                if($sameAnswerBlocker){
+                    break;
+                }
 
                 $uniqueArray = array_unique(array_merge($value, $wordAnswersArray));
                 //var_dump($uniqueArray);
@@ -154,7 +163,11 @@ class CategoryGameController {
                 
             }
 
-            if($minCount <= 2 && $blocker){//blocker just exists because I add the message above if they got the guess right, so i dont want to add the message again. sorry for bad code
+            
+            if($sameAnswerBlocker){
+                
+            }
+            else if($minCount <= 2 && $blocker){//blocker just exists because I add the message above if they got the guess right, so i dont want to add the message again. sorry for bad code
                 $num = 4-$minCount;
                 array_push($wordAnswersArray, "Incorrect Guess, but you had $num in the same category!");
                 array_push($_SESSION["guessArray"], $wordAnswersArray);
